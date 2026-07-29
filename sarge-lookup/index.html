@@ -5,74 +5,151 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sarge Lookup &mdash; Offline Criminal Code Reference for Field Officers</title>
 <meta name="description" content="Sarge Lookup keeps the full criminal code on the device, no signal needed. Built for officers working outside cell coverage.">
+<link rel="icon" href="assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#111;--blue:#1c9fe0;--orange:#f5901e;--paper:#fff;--ghost:#f1f1f1;--mono:"JetBrains Mono",ui-monospace,Consolas,"Courier New",monospace;--serif:"Playfair Display",Georgia,"Times New Roman",serif;}
-  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
-  body{background:var(--paper);color:var(--ink);font-family:var(--mono);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .wrap{position:relative;max-width:1000px;margin:0 auto;padding:52px 36px 100px;overflow:hidden;}
-  .ghost{position:absolute;border:2px solid var(--ghost);z-index:0;pointer-events:none;}
-  .ghost.a{width:300px;height:150px;right:40px;top:300px;} .ghost.b{width:240px;height:380px;right:-40px;top:430px;}
-  .content{position:relative;z-index:1;}
-  header{padding-bottom:22px;}
-  .eyebrow{font-size:14px;letter-spacing:.04em;color:#555;margin-bottom:10px;}
-  .wordmark{font-family:var(--serif);font-weight:700;line-height:0.98;font-size:clamp(40px,8vw,84px);letter-spacing:-0.01em;}
-  .rule{border:0;border-top:7px solid var(--ink);margin:20px 0 40px;}
-  .tagline{font-weight:700;font-size:clamp(22px,3.6vw,32px);line-height:1.24;margin:6px 0 42px;}
-  .tagline .l1{color:var(--blue);} .tagline .l2{color:var(--orange);}
-  main{font-size:16px;} main p{margin:0 0 26px;max-width:66ch;}
-  .badge{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.03em;padding:5px 12px;border:2px solid var(--ink);border-radius:3px;margin-bottom:30px;}
-  .label{margin:34px 0 8px;font-weight:700;}
-  ul.features{margin:0 0 8px;padding-left:3ch;max-width:66ch;}
-  ul.features li{margin:8px 0;}
-  .disclaimer{margin-top:44px;padding:18px 20px;border-left:4px solid var(--ghost);background:#fafafa;font-size:14px;color:#444;max-width:64ch;}
-  .support-block{margin-top:56px;padding-top:32px;border-top:2px solid var(--ghost);}
-  .support-block a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--blue);}
-  .support-block a:hover{color:var(--blue);}
-  .backlink{margin-top:40px;font-size:14px;}
-  .backlink a{color:#777;text-decoration:none;} .backlink a:hover{color:var(--ink);}
-  @media (max-width:640px){.wrap{padding:34px 20px 64px;}.ghost{display:none;}}
+  :root{
+    --bg:#0a1220; --surface:#101d34; --surface-2:#16243f;
+    --border:rgba(143,168,217,0.22); --border-soft:rgba(143,168,217,0.12);
+    --text:#f5f7fa; --text-dim:#a9b8d1;
+    --accent:#8fa8d9; --accent-strong:#5d80c2;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --display:"Space Grotesk",var(--sans);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:radial-gradient(circle at 15% -10%, #16264a 0%, var(--bg) 55%);
+    color:var(--text); font-family:var(--sans); line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px 90px;}
+
+  header.top{display:flex;align-items:center;gap:14px;padding:32px 0 12px;}
+  header.top img{width:40px;height:40px;border-radius:10px;box-shadow:0 0 0 1px var(--border);}
+  .brand{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-0.01em;}
+
+  .hero{padding:48px 0 20px;text-align:center;}
+  .hero img.badge-icon{
+    width:104px;height:104px;border-radius:26px;margin-bottom:28px;
+    box-shadow:0 0 0 1px var(--border), 0 20px 60px -20px rgba(93,128,194,0.55);
+  }
+  h1{
+    font-family:var(--display);font-weight:700;letter-spacing:-0.02em;
+    font-size:clamp(30px,6vw,52px);line-height:1.08;margin:0 0 20px;
+  }
+  h1 .accent{color:var(--accent);}
+  .lede{
+    font-size:clamp(16px,2.4vw,19px);color:var(--text-dim);
+    max-width:56ch;margin:0 auto 30px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+    padding:8px 16px;border-radius:999px;border:1px solid var(--border);
+    background:var(--surface-2);color:var(--accent);
+  }
+  .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);}
+
+  section{padding:48px 0;border-top:1px solid var(--border-soft);}
+  .section-label{
+    font-family:var(--display);font-weight:700;font-size:22px;
+    letter-spacing:-0.01em;margin:0 0 22px;
+  }
+  p.body-copy{font-size:16px;color:var(--text-dim);max-width:64ch;margin:0 0 20px;}
+  p.body-copy strong{color:var(--text);font-weight:600;}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:22px 22px 24px;
+  }
+  .card p{margin:0;font-size:15px;color:var(--text-dim);}
+  .card .k{display:block;font-weight:600;color:var(--text);margin-bottom:6px;font-size:15px;}
+
+  .callout{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:22px 24px;font-size:14.5px;color:var(--text-dim);
+  }
+  .callout strong{color:var(--text);}
+
+  .cta{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    background:linear-gradient(135deg,var(--surface-2),var(--surface));
+    border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px 28px;
+  }
+  .cta p{margin:0;font-size:15.5px;color:var(--text-dim);}
+  .btn{
+    display:inline-block;font-family:var(--display);font-weight:700;font-size:15px;
+    color:var(--bg);background:var(--accent);padding:12px 22px;border-radius:12px;
+    text-decoration:none;white-space:nowrap;transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{background:var(--text);transform:translateY(-1px);}
+
+  footer{padding-top:40px;text-align:center;}
+  footer a{color:var(--text-dim);text-decoration:none;font-size:14px;}
+  footer a:hover{color:var(--accent);}
+
+  @media (max-width:640px){
+    .wrap{padding:0 18px 70px;}
+    .grid{grid-template-columns:1fr;}
+    .hero{padding:36px 0 16px;}
+    .cta{flex-direction:column;align-items:flex-start;}
+    .btn{width:100%;text-align:center;}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="ghost a"></div><div class="ghost b"></div>
-  <div class="content">
-    <header>
-      <div class="eyebrow">A ROOK DYNAMICS PRODUCT</div>
-      <div class="wordmark">Sarge Lookup</div>
-    </header>
-    <hr class="rule">
-    <div class="tagline"><div class="l1">Full criminal code, offline,</div><div class="l2">on your phone.</div></div>
-    <div class="badge">PRIVATE ALPHA &mdash; TESTFLIGHT</div>
-    <main>
-      <p>Built for officers often working outside cell coverage, Sarge Lookup keeps the full criminal code on the device &mdash; no signal needed. Search the way you'd talk to a partner: &ldquo;domestic battery&rdquo; pulls up the actual charging statute first, and statute numbers work just as well. Criminal offenses and vehicle and procedure stay in separate sections so the charging statute doesn't get lost.</p>
+  <header class="top">
+    <img src="assets/icon.png" alt="">
+    <div class="brand">Sarge Lookup</div>
+  </header>
 
-      <div class="label">What's in the app:</div>
-      <ul class="features">
-        <li>Zero network use, ever. No accounts, no analytics, no telemetry. Nothing leaves the phone.</li>
-        <li>Suggested terms appear while you type, before you finish the word.</li>
-        <li>Recent searches sit on-device, one tap to run them again.</li>
-        <li>Partial statute numbers work. Type what you remember and the results narrow from there.</li>
-        <li>Each result shows the citation, the exact subsection that matched, and the line of text that got you there.</li>
-        <li>Full statute text reads with its subsection structure intact, a jump-to-subsection menu, and text you can select and copy.</li>
-        <li>VoiceOver and Dynamic Type are supported throughout.</li>
-      </ul>
-
-      <p>Every results list carries a status badge showing offline mode, which corpus build is loaded, its date, and whether that build has been checked for currency. A stale build gets flagged on screen, not buried in a settings menu. You know exactly how old the law you're reading is before you rely on it.</p>
-
-      <div class="disclaimer">
-        Sarge Lookup is a reference tool. It is not legal advice, and it does not replace your department's policy or your agency's counsel.
-      </div>
-
-      <div class="support-block">
-        Questions or feedback? <a href="support/">Get support</a>
-      </div>
-    </main>
-    <div class="backlink"><a href="../">rookdynamics.com</a></div>
+  <div class="hero">
+    <img class="badge-icon" src="assets/icon.png" alt="Sarge Lookup app icon">
+    <h1>Full criminal code, <span class="accent">offline</span>,<br>on your phone.</h1>
+    <p class="lede">Built for officers often working outside cell coverage. No signal needed &mdash; the charging statute is already on the device.</p>
+    <span class="pill">Private Alpha &middot; TestFlight</span>
   </div>
+
+  <section>
+    <div class="section-label">Search like you'd talk to a partner</div>
+    <p class="body-copy">Type <strong>&ldquo;domestic battery&rdquo;</strong> and the actual charging statute comes up first &mdash; statute numbers work just as well. Criminal offenses and vehicle and procedure stay in separate sections so the charging statute never gets lost in the noise.</p>
+  </section>
+
+  <section>
+    <div class="section-label">What's in the app</div>
+    <div class="grid">
+      <div class="card"><span class="k">Zero network use</span><p>No accounts, no analytics, no telemetry. Nothing leaves the phone, ever.</p></div>
+      <div class="card"><span class="k">Search-as-you-type</span><p>Suggested terms appear before you finish typing the word.</p></div>
+      <div class="card"><span class="k">Recent searches</span><p>Sit on-device, one tap to run them again.</p></div>
+      <div class="card"><span class="k">Partial statute numbers</span><p>Type what you remember and the results narrow from there.</p></div>
+      <div class="card"><span class="k">Exact match, shown</span><p>Every result shows the citation, the matching subsection, and the line of text that got you there.</p></div>
+      <div class="card"><span class="k">Full statute text</span><p>Subsection structure intact, a jump-to-subsection menu, and text you can select and copy.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Know what you're reading</div>
+    <p class="body-copy">Every results list carries a status badge showing offline mode, which corpus build is loaded, its date, and whether that build has been checked for currency. A stale build gets flagged on screen &mdash; not buried in a settings menu.</p>
+    <div class="callout"><strong>Sarge Lookup is a reference tool.</strong> It is not legal advice, and it does not replace your department's policy or your agency's counsel.</div>
+  </section>
+
+  <section>
+    <div class="cta">
+      <p>Questions, bugs, or feedback about the app?</p>
+      <a class="btn" href="support/">Get support</a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="../">&larr; rookdynamics.com</a>
+  </footer>
 </div>
 </body>
 </html>
