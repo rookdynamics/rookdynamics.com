@@ -7,7 +7,6 @@ node_modules/
 
 # Internal-only — not part of the public site, never pushed to GitHub
 README.md
-index.bak.html
 .claude/
 docs/
 *.md
