@@ -113,7 +113,6 @@
   .alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .focus{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
   .focus .card{grid-column:span 2}
-  .focus .card:nth-child(4),.focus .card:nth-child(5){grid-column:span 3}
 
   .dark{background:var(--bg-dark);color:var(--band-h);border:1px solid var(--line);border-radius:var(--r);padding:56px;margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px}
   .dark h3{color:var(--band-h);font-size:24px}
@@ -145,8 +144,7 @@
 
   @media (max-width:960px){
     .cards{grid-template-columns:repeat(2,1fr)}
-    .focus .card,.focus .card:nth-child(4){grid-column:span 3}
-    .focus .card:nth-child(5){grid-column:span 6}
+    .focus .card{grid-column:span 3}
     .three{grid-template-columns:1fr}
     .hero .wrap{grid-template-columns:1fr}
     .hero-card{max-width:520px}
@@ -170,7 +168,7 @@
     section{padding:64px 0}
     .hero{padding:64px 0}
     .cards,.split,.duo,.dark{grid-template-columns:1fr}
-    .focus .card,.focus .card:nth-child(4),.focus .card:nth-child(5){grid-column:span 6}
+    .focus .card{grid-column:span 6}
     .dark{padding:32px;gap:32px}
     .contact .card{padding:32px}
   }
@@ -273,11 +271,12 @@
       </div>
 
       <ul class="plain focus">
-        <li class="card"><div class="n">01</div><h3>Enterprise business</h3><p>Enabling more capabilities to happen faster without endangering livelihoods whenever possible is our goal. Acceleration through the use of AI should result in business growth.</p></li>
-        <li class="card"><div class="n">02</div><h3>Security and defense</h3><p>Tooling for training, simulation, and analysis in security and law enforcement contexts. Detection content, lab environments, and the pipelines around them.</p></li>
-        <li class="card"><div class="n">03</div><h3>Infrastructure automation</h3><p>Systems-level automation, DevOps pipeline engineering, and tooling that runs a team, small shop to enterprise.</p></li>
-        <li class="card"><div class="n">04</div><h3>AI agent architecture</h3><p>Multi-agent systems, LLM orchestration, private model deployment, autonomous workflow engines. We design and deploy agents that execute work across data, systems, and other agents. Not a chatbot in a demo shell.</p></li>
-        <li class="card"><div class="n">05</div><h3>Responsible AI</h3><p>Hardening models and pipelines against attack. Adversarial training, red teaming, differential privacy, and continuous monitoring for drift and abuse.</p></li>
+        <li class="card"><div class="n">01</div><h3>Defensive security automation</h3><p>AI built into the tools your SOC already runs: EDR and XDR, SIEM, SOAR, and the rest of the defensive stack. Alert enrichment, triage, correlation, and response playbooks that cut analyst load without taking the analyst out of the loop. We also advise on what to automate first, what to leave to people, and how to prove the gain.</p></li>
+        <li class="card"><div class="n">02</div><h3>Enterprise business</h3><p>Enabling more capabilities to happen faster without endangering livelihoods whenever possible is our goal. Acceleration through the use of AI should result in business growth.</p></li>
+        <li class="card"><div class="n">03</div><h3>Security and defense</h3><p>Tooling for training, simulation, and analysis in security and law enforcement contexts. Detection content, lab environments, and the pipelines around them.</p></li>
+        <li class="card"><div class="n">04</div><h3>Infrastructure automation</h3><p>Systems-level automation, DevOps pipeline engineering, and tooling that runs a team, small shop to enterprise.</p></li>
+        <li class="card"><div class="n">05</div><h3>AI agent architecture</h3><p>Multi-agent systems, LLM orchestration, private model deployment, autonomous workflow engines. We design and deploy agents that execute work across data, systems, and other agents. Not a chatbot in a demo shell.</p></li>
+        <li class="card"><div class="n">06</div><h3>Responsible AI</h3><p>Hardening models and pipelines against attack. Adversarial training, red teaming, differential privacy, and continuous monitoring for drift and abuse.</p></li>
       </ul>
 
       <div class="dark">
